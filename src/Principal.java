@@ -1,4 +1,6 @@
 import screenmatch.calculos.CalculadoraDeTempo;
+import screenmatch.calculos.FiltroRecomendacao;
+import screenmatch.modelos.Episodio;
 import screenmatch.modelos.Filme;
 import screenmatch.modelos.Serie;
 
@@ -36,5 +38,14 @@ public class Principal {
         calculadora.inclui(shortCircuit);
         calculadora.inclui(house);
         System.out.println(calculadora.getTempoTotal());
+
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(gremlins);
+
+        Episodio episodio = new Episodio();
+        episodio.setNumero(1);
+        episodio.setSerie(house);
+        episodio.setTotalVisualizacoes(100);
+        filtro.filtra(episodio);
     }
 }
