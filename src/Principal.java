@@ -4,6 +4,8 @@ import screenmatch.modelos.Episodio;
 import screenmatch.modelos.Filme;
 import screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
         Filme gremlins = new Filme();
@@ -47,5 +49,20 @@ public class Principal {
         episodio.setSerie(house);
         episodio.setTotalVisualizacoes(100);
         filtro.filtra(episodio);
+
+        var theThing = new Filme();
+        theThing.setNome("The Thing");
+        theThing.setAnoDeLancamento(1982);
+        theThing.setDuracaoEmMinutos(109);
+        theThing.avalia(8.5);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(theThing);
+        listaDeFilmes.add(shortCircuit);
+        listaDeFilmes.add(gremlins);
+        System.out.println("Tamanho da lista: " + listaDeFilmes.size());
+        System.out.println("Primeiro filme: " + listaDeFilmes.getFirst().getNome());
+        System.out.println(listaDeFilmes);
+        System.out.println("toString do filme: " + listaDeFilmes.getFirst().toString());
     }
 }
