@@ -8,9 +8,7 @@ import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
-        Filme gremlins = new Filme();
-        gremlins.setNome("Gremlins");
-        gremlins.setAnoDeLancamento(1984);
+        Filme gremlins = new Filme("Gremlins", 1984);
         gremlins.setDuracaoEmMinutos(106);
 
         gremlins.exibeFichaTecnica();
@@ -22,17 +20,13 @@ public class Principal {
         System.out.println(gremlins.pegaMedia());
         System.out.println("Total de avaliações: " + gremlins.getTotalDeAvaliacoes());
 
-        Serie house = new Serie();
-        house.setNome("House MD");
-        house.setAnoDeLancamento(2004);
+        Serie house = new Serie("House MD", 2004);
         house.setTemporadas(8);
         house.setEpisodiosPorTemporada(22);
         house.setMinutosPorEpisodio(45);
         System.out.println("Duração para maratonar: " + house.getDuracaoEmMinutos());
 
-        Filme shortCircuit = new Filme();
-        shortCircuit.setNome("Short Circuit");
-        shortCircuit.setAnoDeLancamento(1986);
+        Filme shortCircuit = new Filme("Short Circuit", 1986);
         shortCircuit.setDuracaoEmMinutos(98);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -50,9 +44,7 @@ public class Principal {
         episodio.setTotalVisualizacoes(100);
         filtro.filtra(episodio);
 
-        var theThing = new Filme();
-        theThing.setNome("The Thing");
-        theThing.setAnoDeLancamento(1982);
+        var theThing = new Filme("The Thing", 1982);
         theThing.setDuracaoEmMinutos(109);
         theThing.avalia(8.5);
 
