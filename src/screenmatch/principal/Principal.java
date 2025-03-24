@@ -1,3 +1,5 @@
+package screenmatch.principal;
+
 import screenmatch.calculos.CalculadoraDeTempo;
 import screenmatch.calculos.FiltroRecomendacao;
 import screenmatch.modelos.Episodio;
