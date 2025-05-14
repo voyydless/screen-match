@@ -1,4 +1,4 @@
-package screenmatch.principal;
+package screenmatch.buscas;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -17,21 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PrincipalComBusca {
-    public static void main(String[] args) throws IOException, InterruptedException {
+public class Busca {
+
+    public static void fazerBusca() throws IOException, InterruptedException {
         Scanner leitura = new Scanner(System.in);
-        String busca = "";
         List<Titulo> titulos = new ArrayList<>();
+        String busca = "";
+
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                 .setPrettyPrinting()
                 .create();
 
-        while (!busca.equalsIgnoreCase("sair")) {
-            System.out.println("Digite um filme para buscar: ");
+        while (!busca.equalsIgnoreCase("s")) {
+            System.out.println("\nDigite um filme para converter para json ou 's' para sair: ");
             busca = leitura.nextLine();
 
-            if (busca.equalsIgnoreCase("sair")) {
+            if (busca.equalsIgnoreCase("s")) {
                 break;
             }
 
@@ -52,12 +54,11 @@ public class PrincipalComBusca {
                 HttpResponse<String> response = client
                         .send(request, HttpResponse.BodyHandlers.ofString());
                 String json = response.body();
-                System.out.println(json);
 
                 TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
 
                 Titulo meuTitulo = new Titulo(meuTituloOmdb);
-                System.out.println("Título convertido:");
+                System.out.println("Título encontrado:");
                 System.out.println(meuTitulo);
 
                 titulos.add(meuTitulo);
@@ -71,11 +72,10 @@ public class PrincipalComBusca {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.println(titulos);
-
         FileWriter escrita = new FileWriter("filmes.json");
         escrita.write(gson.toJson(titulos));
         escrita.close();
-        System.out.println("\nO programa finalizou corretamente!");
+
+        System.out.println("Títulos convertidos para json com sucesso! Verifique o arquivo filmes.json");
     }
 }
