@@ -1,42 +1,22 @@
 [
   {
+    "Nome": "The Matrix",
+    "AnoDeLancamento": 1999,
+    "IncluidoNoPlano": true,
+    "Avaliacao": 8.7,
+    "QtdeAvaliacoes": 2155126,
+    "DuracaoEmMinutos": 136,
+    "Genero": "Action, Sci-Fi",
+    "Diretor": "Lana Wachowski, Lilly Wachowski"
+  },
+  {
     "Nome": "Little Miss Sunshine",
     "AnoDeLancamento": 2006,
     "IncluidoNoPlano": true,
-    "Avaliacao": 0.0,
-    "QtdeAvaliacoes": 0,
-    "DuracaoEmMinutos": 101
-  },
-  {
-    "Nome": "Texas Chainsaw Massacre",
-    "AnoDeLancamento": 2022,
-    "IncluidoNoPlano": true,
-    "Avaliacao": 0.0,
-    "QtdeAvaliacoes": 0,
-    "DuracaoEmMinutos": 81
-  },
-  {
-    "Nome": "Saw",
-    "AnoDeLancamento": 2004,
-    "IncluidoNoPlano": true,
-    "Avaliacao": 0.0,
-    "QtdeAvaliacoes": 0,
-    "DuracaoEmMinutos": 103
-  },
-  {
-    "Nome": "Batman",
-    "AnoDeLancamento": 1989,
-    "IncluidoNoPlano": true,
-    "Avaliacao": 0.0,
-    "QtdeAvaliacoes": 0,
-    "DuracaoEmMinutos": 126
-  },
-  {
-    "Nome": "Matrix",
-    "AnoDeLancamento": 1993,
-    "IncluidoNoPlano": true,
-    "Avaliacao": 0.0,
-    "QtdeAvaliacoes": 0,
-    "DuracaoEmMinutos": 60
+    "Avaliacao": 7.8,
+    "QtdeAvaliacoes": 529633,
+    "DuracaoEmMinutos": 101,
+    "Genero": "Comedy, Drama",
+    "Diretor": "Jonathan Dayton, Valerie Faris"
   }
 ]

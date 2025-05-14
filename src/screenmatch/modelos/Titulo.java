@@ -2,19 +2,19 @@ package screenmatch.modelos;
 
 import screenmatch.exceptions.ErroDeConversaoDeAnoException;
 
-public class Titulo implements Comparable<Titulo>{
+
+public class Titulo{
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double avaliacao;
     private int qtdeAvaliacoes;
     private int duracaoEmMinutos;
+    private String genero;
+    private String diretor;
 
-    public Titulo(String nome, int anoDeLancamento){
-        this.setNome(nome);
-        this.setAnoDeLancamento(anoDeLancamento);
-    }
-
+    // Cria um novo Título a partir de dados obtidos da API OMDb;
+    // Realiza conversões e validações dos dados recebidos
     public Titulo(TituloOmdb meuTituloOmdb) {
         this.nome = meuTituloOmdb.title();
 
@@ -27,34 +27,33 @@ public class Titulo implements Comparable<Titulo>{
             this.incluidoNoPlano = true;
         }
 
-        this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0,3).trim());
+        // Converte a avaliação IMDB para double, tratando valores nulos ou não disponíveis
+        if (meuTituloOmdb.imdbRating() != null && !meuTituloOmdb.imdbRating().equals("N/A")) {
+            this.avaliacao = Double.valueOf(meuTituloOmdb.imdbRating());
+        } else {
+            this.avaliacao = 0;
+        }
+
+        // Processa a quantidade de votos, removendo caracteres não numéricos
+        if (meuTituloOmdb.imdbVotes() != null && !meuTituloOmdb.imdbVotes().equals("N/A")) {
+            String votosLimpos = meuTituloOmdb.imdbVotes().replaceAll("[^0-9]", "");
+            this.qtdeAvaliacoes = votosLimpos.isEmpty() ? 0 : Integer.valueOf(votosLimpos);
+        } else {
+            this.qtdeAvaliacoes = 0;
+        }
+
+        // Extrai apenas os dígitos da duração (runtime)
+        String duracaoLimpa = meuTituloOmdb.runtime().replaceAll("[^0-9]", "");
+        this.duracaoEmMinutos = Integer.valueOf(duracaoLimpa);
+
+        this.genero = meuTituloOmdb.genre();
+
+        this.diretor = meuTituloOmdb.director();
     }
 
-    public int getAnoDeLancamento() { return anoDeLancamento; }
-
-    public String getNome() { return nome; }
-
-    public boolean isIncluidoNoPlano() { return incluidoNoPlano; }
-
-    public int getDuracaoEmMinutos() { return duracaoEmMinutos; }
-
-    public int getQtdeAvaliacoes(){ return qtdeAvaliacoes; }
-
-    public void setNome(String nome) { this.nome = nome; }
-
-    public void setAnoDeLancamento(int anoDeLancamento) { this.anoDeLancamento = anoDeLancamento; }
-
-    public void setIncluidoNoPlano(boolean incluidoNoPlano) { this.incluidoNoPlano = incluidoNoPlano; }
-
-    public void setDuracaoEmMinutos(int duracaoEmMinutos) { this.duracaoEmMinutos = duracaoEmMinutos; }
 
     @Override
     public String toString() {
-        return getNome() + " (" + getAnoDeLancamento() + ")" + " - " + getDuracaoEmMinutos() + " min";
-    }
-
-    @Override
-    public int compareTo(Titulo outroTitulo) {
-        return this.getNome().compareTo(outroTitulo.getNome());
+        return nome + " (" + anoDeLancamento + ")" + " - " + duracaoEmMinutos + " min";
     }
 }
